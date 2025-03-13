@@ -4,4 +4,208 @@
 
 html {
   font-size: 10px;
+  background-color: #928ba2;
+}
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+main {
+  width: 90%;
+  max-width: 600px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 2px;
+  border: 2px solid black;
+}
+
+.grid-items {
+  position: relative;
+  border: 0.1rem solid gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  font-size: 2rem;
+  background-color: white;
+}
+
+.grid-items input {
+  width: 80%;
+  height: 80%;
+  font-size: 2rem;
+  text-align: center;
+  border: none;
+  outline: none;
+}
+
+.grid-items .prompt {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+#box3, #box7, #box10, #box11, #box12, #box15 {
+  border-left: 0.5rem solid black;
+  animation: fadeInBorderLeft 2s forwards;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), inset 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+#box1, #box2, #box3, #box4, #box5, #box8, #box9, #box10, #box11 {
+  border-bottom: 0.5rem solid black;
+  animation: fadeInBorderBottom 2s forwards;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3), inset 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.answer {
+  width: 50%;
+  height: 50%;
+  text-align: center;
+}
+
+.special {
+  border: none;
+  font-size: 2rem;
+}
+@media (min-width: 475px) {
+  html {
+    font-size: 16px;
+  }
+}
+.prompt {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+}
+
+.grid-items {
+  height: 80px;
+}
+
+.grid-items input {
+  font-size: 1.5rem;
+}
+
+.grid-items .prompt {
+  font-size: 1rem;
+}
+@keyframes fadeInBorderLeft {
+  0% {
+    border-left-color: transparent;
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  100% {
+    border-left-color: black;
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInBorderBottom {
+  0% {
+    border-bottom-color: transparent;
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  100% {
+    border-bottom-color: black;
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+
+@keyframes cardFlip {
+  0% {
+    transform: perspective(600px) rotateY(0deg);
+  }
+  49.9% {
+    transform: perspective(600px) rotateY(90deg);
+    opacity: 1;
+  }
+  50% {
+    transform: perspective(600px) rotateY(90deg);
+    opacity: 0;
+  }
+  50.1% {
+    transform: perspective(600px) rotateY(90deg);
+    opacity: 0;
+  }
+  100% {
+    transform: perspective(600px) rotateY(360deg);
+    opacity: 1;
+  }
+}
+
+.grid-items.flip .content {
+  display: none;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(300px) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+@keyframes slideBack {
+  0% {
+    transform: translateY(300px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.grid-items {
+  animation: cardFlip 2s forwards, shake 2s 2s forwards, fall 4s 4s forwards, slideBack 2s 8s forwards;
+}
+
+#box1, #box2, #box3, #box4, #box5, #box6, #box7, #box8, #box9, #box10, #box11, #box12, #box13, #box14, #box15, #box16 {
+  animation: fadeInBorderLeft 2s forwards, fadeInBorderBottom 2s forwards, cardFlip 2s 4s forwards, fall 4s 6s forwards, slideBack 2s 10s forwards;
+  background-color: white;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.grid-items::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  transform: rotateY(180deg);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+  background-color: #fff;
 }
